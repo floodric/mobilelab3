@@ -3,35 +3,56 @@
   <head>
     <title>Courses</title>
    	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <script src="model/model.js"> </script>
+    <script> 
+	
+	$(function() {
+		$("#f1").click(viewCourse);
+		$("#f2").submit(createCourse);
+	} );
+
+
+	function viewCourse() {
+	$.ajax({
+			url: "courses",
+			type: "get",
+			data: {
+				courseNumber: $("#ts1").val()
+			},
+			success: function(data) {
+				$('#div1').html(JSON.parse(data));
+			}
+	});
+	return false;	
+
+
+	function createCourse() {
+	$.ajax({
+			url: "courses",
+			type: "put",
+			data: {
+				courseNumber: $("#cn1").val()
+			},
+			success: function(data) {
+				$('#div2').html(data);
+			}
+	});
+	return false;	
+}
+
+    </script>
   </head>
   <body>
-		<form id="f1">
-		  Test string 1: <input id="ts1" type="text" name="ts1"><br>
-		  <input type="submit" value="Submit">
-		</form>
+	
+	<input id="f1" type="button" value="View Courses">
+	<div id="div1"> </div>
 
-		<div id="div1"> </div>
+	<form id="f2">
+		<input id="cn1" type="text" name="courseNumber">
+		<input type="submit" value="Submit">
 
-		<form id="f2">
-		  Test string 2: <input id="ts2" type="text" name="ts2"><br>
-		  <input type="submit" value="Submit">
-		</form>
-		<div id="div2"> </div>
+	</form>
+	<div id="div2"></div>
 
-		<form id="f3">
-		  Test string 3: <input id="ts3" type="text" name="ts1"><br>
-		  <input type="submit" value="Submit">
-		</form>
 
-		<form id="f4">
-		  Test string 4: <input id="ts4" type="text" name="ts1"><br>
-		  <input type="submit" value="Submit">
-		</form>
-
-		<form id="f5">
-		  Test string 5: <input id="ts5" type="text" name="ts1"><br>
-		  <input type="submit" value="Submit">
-		</form>
   </body>
 </html>
