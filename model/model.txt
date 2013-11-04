@@ -1,5 +1,5 @@
 course:
-  int number
+  string courseNumber
   string name
   string instructor
   student[] students
