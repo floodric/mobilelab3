@@ -33,7 +33,7 @@ app.get('/courses/:coursenum', function(req,res){
 //app.get('/courses/:coursenum/students/:andrew', routes.pathless);	
 app.put('/courses', function(req,res){
   console.log(req);
-  var course = {"courseNumber":req.params.courseNumber,"name":req.params.name,"instructor":req.params.instructor};
+  var course = {"courseNumber":req.body.courseNumber,"name":req.body.name,"instructor":req.body.instructor};
   var bool = model.create(req.params.coursenum);
   res.end(JSON.stringify(bool));
 });	

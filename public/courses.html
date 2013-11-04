@@ -49,6 +49,24 @@
 
 
 
+	function editCourse(event) {
+		console.log("edit course");
+		$.ajax({
+				url: "courses",
+				type: "put",
+				data: {
+					courseNumber: $("#courseNumber").val(),
+					name: $("#name").val(),
+					instructor: $("#instructor").val()
+				},
+				success: function(data) {
+					if (data == "true") { $('#div2').html("Successfully created course"); }
+					else { $('#div2').html("Could not create course")};
+				}
+		});
+		return false;	
+	};
+
 
 	$(function() {
 		$("#f1").click(viewCourse);
