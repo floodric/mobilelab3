@@ -1,7 +1,0 @@
-course:
-  int number
-  string name
-  string instructor
-  student[] students
-
-
