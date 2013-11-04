@@ -32,8 +32,8 @@ function addToList(course){
   //  return false;
 }
 
-function removeFromList(course){
-  courseNumber = stripDash(course.courseNumber);
+function removeFromList(courseNumber){
+  courseNumber = stripDash(courseNumber);
   if(getCourse(courseNumber)){
     courseList.filter(function(val,i,arr){val.courseNumber == courseNumber});
     return true;
