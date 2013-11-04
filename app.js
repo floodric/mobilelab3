@@ -32,25 +32,23 @@ app.get('/courses/:coursenum', function(req,res){
 //app.get('/courses/:coursenum/students', routes.pathless);	
 //app.get('/courses/:coursenum/students/:andrew', routes.pathless);	
 app.put('/courses', function(req,res){
-  console.log(req);
-  var course = {"courseNumber":req.params.courseNumber,"name":req.params.name,"instructor":req.params.instructor};
-  var bool = model.create(req.params.coursenum);
+  var course = {"courseNumber":req.body.courseNumber,"name":req.body.name,"instructor":req.body.instructor};
+  console.log(course);
+  var bool = model.create(course);
   res.end(JSON.stringify(bool));
 });	
 //app.put('/courses/:coursenum/students', routes.pathless);	
 app.post('/courses/:coursenum',function(req,res){
-  var bool = model.edit(req.params.coursenum);
+  var course = {"courseNumber":req.body.courseNumber,"name":req.body.name,"instructor":req.body.instructor};
+  var bool = model.edit(course);
   res.end(JSON.stringify(bool));
 });	
 //app.post('/courses/:coursenum/students/:andrew', routes.pathless);	
 app.delete('/courses', function(req,res){
-  var bool = model.destroy(req.params.coursenum);
+  var bool = model.destroy(req.body.coursenum);
   res.send(JSON.stringify(bool));
 });	
 //app.delete('/courses/:coursenum/students', routes.pathless);	
-
-app.post('/request', update.doPost);	// example handling of a POST request 
-app.put('/request', update.doPut);		// example handling of a PUT request
 
 app.listen(5555);
 console.log("Express server listening on port 5555");
