@@ -29,8 +29,9 @@ app.post('/courses/:coursenum', routes.pathless);
 app.post('/courses/:coursenum/students/:andrew', routes.pathless);	
 app.delete('/courses', routes.pathless);	
 app.delete('/courses/:coursenum/students', routes.pathless);	
+
 app.post('/request', update.doPost);	// example handling of a POST request 
 app.put('/request', update.doPut);			// example handling of a PUT request
 
-app.listen(44444);
-console.log("Express server listening on port 44444");
+app.listen(5555);
+console.log("Express server listening on port 5555");
