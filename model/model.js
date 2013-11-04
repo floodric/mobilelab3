@@ -1,6 +1,6 @@
 // empty file for editing
 
-var courselist = {
+var courseList = {
   "95231":{ "name":"Intoructory Golf" , "courseNumber":"95-231", "instructor": "Tiger Woods" },
   "67327":{ "name":"Mobile to Cloud: Building Distributed Systems" , "courseNumber":"67-327", "instructor": "Joe Mertz" },
   "67328":{ "name":"Web Application Security" , "lastName":"67-328", "instructor": "Clarence Heimann" },
