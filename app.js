@@ -24,18 +24,18 @@ app.get('/courses', model.list);
 // function(req,res){ console.log(typeof req.params.coursenum) });
 app.get('/courses/:coursenum', function(req,res){
   var course = model.view(req.params.coursenum);
-  res.send(JSON.stringify(course));
+  res.end(JSON.stringify(course));
 });	
 //app.get('/courses/:coursenum/students', routes.pathless);	
 //app.get('/courses/:coursenum/students/:andrew', routes.pathless);	
 app.put('/courses', function(req,res){
   var course = model.create(req.params.coursenum);
-  res.send(JSON.stringify(course));
+  res.end(JSON.stringify(course));
 });	
 //app.put('/courses/:coursenum/students', routes.pathless);	
 app.post('/courses/:coursenum',function(req,res){
   var bool = model.edit(req.params.coursenum);
-  res.send(JSON.stringify(bool));
+  res.end(JSON.stringify(bool));
 });	
 //app.post('/courses/:coursenum/students/:andrew', routes.pathless);	
 app.delete('/courses', function(req,res){
