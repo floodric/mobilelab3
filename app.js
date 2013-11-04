@@ -20,15 +20,15 @@ app.configure(function(){
 });
 
 app.get('/', routes.pathless);	
-app.get('/courses', course.list);	
-app.get('/courses/:coursenum', routes.pathless);	
+app.get('/courses', exports.list);	
+app.get('/courses/:coursenum', exports.view(:coursenum));	
 //app.get('/courses/:coursenum/students', routes.pathless);	
 //app.get('/courses/:coursenum/students/:andrew', routes.pathless);	
-app.put('/courses', routes.pathless);	
+app.put('/courses', exports.create(:coursenum));	
 //app.put('/courses/:coursenum/students', routes.pathless);	
-app.post('/courses/:coursenum', routes.pathless);	
+app.post('/courses/:coursenum',exports.edit(:coursenum));	
 //app.post('/courses/:coursenum/students/:andrew', routes.pathless);	
-app.delete('/courses', routes.pathless);	
+app.delete('/courses', routes.pathless(exports.destroy(:coursenum));	
 //app.delete('/courses/:coursenum/students', routes.pathless);	
 
 app.post('/request', update.doPost);	// example handling of a POST request 
