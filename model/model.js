@@ -1,4 +1,13 @@
 // empty file for editing
+$(function() {
+	$("#f1").submit(addToList);
+	$("#f2").submit(removeFromList);
+	$("#f3").submit(editCourse);
+	$("#f4").submit(viewCourse);
+	$("#f5").submit(listCourses);
+	} );
+
+
 
 // courses is an array of courses
 var courseList = $.getJSON('./courses.json').courses;
