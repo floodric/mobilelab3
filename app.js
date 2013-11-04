@@ -21,14 +21,14 @@ app.configure(function(){
 app.get('/', routes.pathless);	
 app.get('/courses', course.list);	
 app.get('/courses/:coursenum', routes.pathless);	
-app.get('/courses/:coursenum/students', routes.pathless);	
-app.get('/courses/:coursenum/students/:andrew', routes.pathless);	
+//app.get('/courses/:coursenum/students', routes.pathless);	
+//app.get('/courses/:coursenum/students/:andrew', routes.pathless);	
 app.put('/courses', routes.pathless);	
-app.put('/courses/:coursenum/students', routes.pathless);	
+//app.put('/courses/:coursenum/students', routes.pathless);	
 app.post('/courses/:coursenum', routes.pathless);	
-app.post('/courses/:coursenum/students/:andrew', routes.pathless);	
+//app.post('/courses/:coursenum/students/:andrew', routes.pathless);	
 app.delete('/courses', routes.pathless);	
-app.delete('/courses/:coursenum/students', routes.pathless);	
+//app.delete('/courses/:coursenum/students', routes.pathless);	
 app.post('/request', update.doPost);	// example handling of a POST request 
 app.put('/request', update.doPut);			// example handling of a PUT request
 
