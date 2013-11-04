@@ -32,14 +32,13 @@ app.get('/courses/:coursenum', function(req,res){
 //app.get('/courses/:coursenum/students', routes.pathless);	
 //app.get('/courses/:coursenum/students/:andrew', routes.pathless);	
 app.put('/courses', function(req,res){
-
   var course = {"courseNumber":req.body.courseNumber,"name":req.body.name,"instructor":req.body.instructor};
   console.log(course);
   var bool = model.create(course);
   res.end(JSON.stringify(bool));
 });	
 //app.put('/courses/:coursenum/students', routes.pathless);	
-app.post('/courses/:coursenum',function(req,res){
+app.post('/courses',function(req,res){
   var course = {"courseNumber":req.body.courseNumber,"name":req.body.name,"instructor":req.body.instructor};
   var bool = model.edit(course);
   res.end(JSON.stringify(bool));
