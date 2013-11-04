@@ -2,7 +2,7 @@ var express = require('express'),
     routes = require('./routes/slash'),
     course = require('./routes/course'),
     update = require('./routes/update'),
-    model = require('./routes/model.js'),
+    model = require('./model/model.js'),
     http = require('http'),
     path = require('path');
 
@@ -32,7 +32,7 @@ app.delete('/courses', model.destroy(coursenum));
 //app.delete('/courses/:coursenum/students', routes.pathless);	
 
 app.post('/request', update.doPost);	// example handling of a POST request 
-app.put('/request', update.doPut);			// example handling of a PUT request
+app.put('/request', update.doPut);		// example handling of a PUT request
 
 app.listen(5555);
 console.log("Express server listening on port 5555");
