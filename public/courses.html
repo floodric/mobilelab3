@@ -5,51 +5,75 @@
    	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script> 
 	
-	$(function() {
-		$("#f1").click(viewCourse);
-		$("#f2").submit(createCourse);
-	} );
 
 
 	function viewCourse() {
-	$.ajax({
-			url: "courses",
-			type: "get",
-			data: {
-				courseNumber: $("#ts1").val()
-			},
-			success: function(data) {
-				$('#div1').html(JSON.parse(data));
-			}
-	});
-	return false;	
+		console.log("view course");
+		$.ajax({
+				url: "courses",
+				type: "get",
+				data: {
+					courseNumber: $("#ts1").val()
+				},
+				success: function(data) {
+					//$('#div1').(JSON.parse(data));
+					data = JSON.parse(data);
+					data.forEach(function( val, i, arr) {
+						console.log(val);
+						$('#div1').append("<p>" + val.courseNumber + ": " + val.name + "</p>");
+					});
+				}
+		});
+		return false;
+
+	};
+
+	function createCourse(event) {
+		console.log("create course");
+		$.ajax({
+				url: "courses",
+				type: "put",
+				data: {
+					courseNumber: $("#courseNumber").val(),
+					name: $("#name").val(),
+					instructor: $("#instructor").val()
+				},
+				success: function(data) {
+					if (data == "true") { $('#div2').html("Successfully created course"); }
+					else { $('#div2').html("Could not create course")};
+				}
+		});
+		return false;	
+	};
 
 
-	function createCourse() {
-	$.ajax({
-			url: "courses",
-			type: "put",
-			data: {
-				courseNumber: $("#cn1").val()
-			},
-			success: function(data) {
-				$('#div2').html(data);
-			}
-	});
-	return false;	
-}
+
+
+
+	$(function() {
+		$("#f1").click(viewCourse);
+		$("#f2").submit( function(event) {
+			event.preventDefault();
+			createCourse();
+		});
+
+	} );
+
 
     </script>
   </head>
+
   <body>
 	
 	<input id="f1" type="button" value="View Courses">
 	<div id="div1"> </div>
 
 	<form id="f2">
-		<input id="cn1" type="text" name="courseNumber">
-		<input type="submit" value="Submit">
+		<input type="text" id="courseNumber" value="Course Number">
+		<input type="text" id="name" value="Course Name">
+		<input type="text" id="instructor" value="Instructor Name">
 
+		<input type="submit" value="Submit">
 	</form>
 	<div id="div2"></div>
 
