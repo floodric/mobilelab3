@@ -1,16 +1,14 @@
 // empty file for editing
-$(function() {
-	$("#f1").submit(addToList);
-	$("#f2").submit(removeFromList);
-	$("#f3").submit(editCourse);
-	$("#f4").submit(viewCourse);
-	$("#f5").submit(listCourses);
-	} );
 
-
-
-// courses is an array of courses
-var courseList = $.getJSON('./courses.json').courses;
+var courselist = {
+  "95231":{ "name":"Intoructory Golf" , "courseNumber":"95-231", "instructor": "Tiger Woods" },
+  "67327":{ "name":"Mobile to Cloud: Building Distributed Systems" , "courseNumber":"67-327", "instructor": "Joe Mertz" },
+  "67328":{ "name":"Web Application Security" , "lastName":"67-328", "instructor": "Clarence Heimann" },
+  "51262":{ "name":"Communication Design Fundamentals" , "courseNumber":"51-262", "instructor": "Brenden Kneram" },
+  "70203":{ "name":"Finance" , "courseNumber":"70-203", "instructor": "Nancy Fi" },
+  "51201":{ "name":"Design Studio I" , "courseNumber":"51-201", "instructor": "Bob Ross" },
+  "05499":{ "name":"Sensemaking" , "courseNumber":"05-499", "instructor": "Nikki Nik" }
+}
 
 function stripDash(courseNumString){
   // strip out spaces/dashes since we want unified model
@@ -47,7 +45,7 @@ function listCourses(){
 
 exports.view = viewCourse;
 exports.edit = editCourse;
-exports.destroy = removeFromList();
+exports.destroy = removeFromList;
 exports.create = addToList;
-exports.list = listCourses();
+exports.list = listCourses;
 
