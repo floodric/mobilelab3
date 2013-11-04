@@ -21,14 +21,15 @@ app.configure(function(){
 
 app.get('/', routes.pathless);	
 app.get('/courses', model.list);	
-app.get('/courses/:coursenum', model.view(coursenum));	
+// function(req,res){ console.log(typeof req.params.coursenum) });
+app.get('/courses/:coursenum', function(req,res){model.view(req.params.coursenum)});	
 //app.get('/courses/:coursenum/students', routes.pathless);	
 //app.get('/courses/:coursenum/students/:andrew', routes.pathless);	
-app.put('/courses', model.create(coursenum));	
+app.put('/courses', function(req,res){model.create(req.params.coursenum)});	
 //app.put('/courses/:coursenum/students', routes.pathless);	
-app.post('/courses/:coursenum',model.edit(coursenum));	
+app.post('/courses/:coursenum',function(req,res){model.edit(req.params.coursenum)});	
 //app.post('/courses/:coursenum/students/:andrew', routes.pathless);	
-app.delete('/courses', model.destroy(coursenum));	
+app.delete('/courses', function(req,res){model.destroy(req.params.coursenum)});	
 //app.delete('/courses/:coursenum/students', routes.pathless);	
 
 app.post('/request', update.doPost);	// example handling of a POST request 
