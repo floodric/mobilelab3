@@ -2,6 +2,7 @@ var express = require('express'),
     routes = require('./routes/slash'),
     course = require('./routes/course'),
     update = require('./routes/update'),
+    model = require('./routes/model.js'),
     http = require('http'),
     path = require('path');
 
