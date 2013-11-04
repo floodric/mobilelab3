@@ -20,7 +20,10 @@ app.configure(function(){
 });
 
 app.get('/', routes.pathless);	
-app.get('/courses', model.list);	
+app.get('/courses', function(req,res){
+  var courseList = model.list()
+  res.end(JSON.stringify(courseList));
+});	
 // function(req,res){ console.log(typeof req.params.coursenum) });
 app.get('/courses/:coursenum', function(req,res){
   var course = model.view(req.params.coursenum);
