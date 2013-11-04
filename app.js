@@ -28,11 +28,17 @@ app.get('/courses/:coursenum', function(req,res){
 });	
 //app.get('/courses/:coursenum/students', routes.pathless);	
 //app.get('/courses/:coursenum/students/:andrew', routes.pathless);	
-app.put('/courses', function(req,res){model.create(req.params.coursenum)});	
+app.put('/courses', function(req,res){
+  var course = model.create(req.params.coursenum);
+  res.send(JSON.stringify(course));});	
 //app.put('/courses/:coursenum/students', routes.pathless);	
-app.post('/courses/:coursenum',function(req,res){model.edit(req.params.coursenum)});	
+app.post('/courses/:coursenum',function(req,res){
+  var course = model.edut(req.params.coursenum);
+  res.send(JSON.stringify(course));});	
 //app.post('/courses/:coursenum/students/:andrew', routes.pathless);	
-app.delete('/courses', function(req,res){model.destroy(req.params.coursenum)});	
+app.delete('/courses', function(req,res){
+  var course = model.destroy(req.params.coursenum);
+  res.send(JSON.stringify(course));});	
 //app.delete('/courses/:coursenum/students', routes.pathless);	
 
 app.post('/request', update.doPost);	// example handling of a POST request 
