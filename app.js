@@ -22,7 +22,10 @@ app.configure(function(){
 app.get('/', routes.pathless);	
 app.get('/courses', model.list);	
 // function(req,res){ console.log(typeof req.params.coursenum) });
-app.get('/courses/:coursenum', function(req,res){model.view(req.params.coursenum)});	
+app.get('/courses/:coursenum', function(req,res){
+  var course = model.view(req.params.coursenum);
+  res.send(JSON.stringify(course));
+});	
 //app.get('/courses/:coursenum/students', routes.pathless);	
 //app.get('/courses/:coursenum/students/:andrew', routes.pathless);	
 app.put('/courses', function(req,res){model.create(req.params.coursenum)});	
