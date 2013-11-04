@@ -24,14 +24,18 @@ function removeFromList(course){
   courseNumber = stripDash(course.courseNumber);
   if(courseList[courseNumber]){
     courseList[courseNumber] = null;
+    return true;
   }
+  return false;
 }
 
 function editCourse(course){
   courseNumber = stripDash(courseNumber);
   if(courseList[courseNumber]){
     courseList[courseNumber] = course;
+    return true;
   }
+  return false;
 }
 
 function viewCourse(courseNumber){
