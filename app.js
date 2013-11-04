@@ -32,8 +32,10 @@ app.get('/courses/:coursenum', function(req,res){
 //app.get('/courses/:coursenum/students', routes.pathless);	
 //app.get('/courses/:coursenum/students/:andrew', routes.pathless);	
 app.put('/courses', function(req,res){
-  var course = model.create(req.params.coursenum);
-  res.end(JSON.stringify(course));
+  console.log(req);
+  var course = {"courseNumber":req.params.courseNumber,"name":req.params.name,"instructor":req.params.instructor};
+  var bool = model.create(req.params.coursenum);
+  res.end(JSON.stringify(bool));
 });	
 //app.put('/courses/:coursenum/students', routes.pathless);	
 app.post('/courses/:coursenum',function(req,res){
