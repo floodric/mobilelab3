@@ -1,7 +1,7 @@
 // empty file for editing
 
 // courses is an array of courses
-var courseList = $.getJSON('./courses.json');
+var courseList = $.getJSON('./courses.json').courses;
 function addToList(course){
   courseList[course.courseNumber] = course;
 }
