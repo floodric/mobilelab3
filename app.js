@@ -21,19 +21,19 @@ app.configure(function(){
 });
 
 app.get('/', routes.pathless);	
+// list
 app.get('/courses', function(req,res){
   var courseList = model.list()
   res.writeHead(200, {'Content-Type': 'text/plain'});
   res.end(JSON.stringify(courseList));
 });	
-// function(req,res){ console.log(typeof req.params.coursenum) });
+// view
 app.get('/courses/:coursenum', function(req,res){
   var course = model.view(req.params.coursenum);
   res.writeHead(200, {'Content-Type': 'text/plain'});
   res.end(JSON.stringify(course));
 });	
-//app.get('/courses/:coursenum/students', routes.pathless);	
-//app.get('/courses/:coursenum/students/:andrew', routes.pathless);	
+// create
 app.put('/courses', function(req,res){
   var course = {"courseNumber":req.body.courseNumber,"name":req.body.name,"instructor":req.body.instructor};
   console.log(course);
@@ -41,7 +41,7 @@ app.put('/courses', function(req,res){
   res.writeHead(200, {'Content-Type': 'text/plain'});
   res.end(JSON.stringify(bool));
 });	
-//app.put('/courses/:coursenum/students', routes.pathless);	
+// edit
 app.post('/courses',function(req,res){
   var course = {"courseNumber":req.body.courseNumber,"name":req.body.name,"instructor":req.body.instructor};
   console.log(JSON.stringify(course));
@@ -49,13 +49,12 @@ app.post('/courses',function(req,res){
   res.writeHead(200, {'Content-Type': 'text/plain'});
   res.end(JSON.stringify(bool));
 });	
-//app.post('/courses/:coursenum/students/:andrew', routes.pathless);	
+// delete
 app.delete('/courses', function(req,res){
   var bool = model.destroy(req.body.courseNumber);
   res.writeHead(200, {'Content-Type': 'text/plain'});
   res.end(JSON.stringify(bool));
 });	
-//app.delete('/courses/:coursenum/students', routes.pathless);	
 
 app.listen(5555);
 console.log("Express server listening on port 5555");
