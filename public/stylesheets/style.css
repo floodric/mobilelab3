@@ -1,8 +1,13 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+#div2 {
+    border: 1px dotted #ff0000;
+    padding:8px;
+    margin-top:10px;
 }

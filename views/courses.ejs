@@ -3,117 +3,15 @@
   <head>
     <title>Courses</title>
    	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <script> 
-	
-
-
-	function viewCourse() {
-		$('#div1').html("");
-		$.ajax({
-				url: "courses",
-				type: "get",
-				data: {
-					courseNumber: $("#ts1").val()
-				},
-				success: function(data) {
-					//$('#div1').(JSON.parse(data));
-          console.log(data);
-					data = JSON.parse(data);
-					data.forEach(function( val, i, arr) {
-						console.log(val);
-						$('#div1').append("<p>" + val.courseNumber + ": " + val.name + "</p>");
-					});
-				}
-		});
-		return false;
-
-	};
-
-	function createCourse(event) {
-		console.log("create course");
-		$.ajax({
-				url: "courses",
-				type: "put",
-				data: {
-					courseNumber: $("#courseNumber").val(),
-					name: $("#name").val(),
-					instructor: $("#instructor").val()
-				},
-				success: function(data) {
-					if (data == "true") { $('#div2').html("Successfully created course"); }
-					else { $('#div2').html("Could not create course")};
-				}
-		});
-		return false;	
-	};
-
-
-
-
-	function editCourse(event) {
-		console.log("edit course");
-		$.ajax({
-				url: "courses",
-				type: "post",
-				data: {
-					courseNumber: $("#courseNumberEdit").val(),
-					name: $("#nameEdit").val(),
-					instructor: $("#instructorEdit").val()
-				},
-				success: function(data) {
-					if (data == "true") { $('#div2').html("Successfully edited course"); }
-					else { $('#div2').html("Could not edit course")};
-				}
-		});
-		return false;	
-	};
-
-
-
-	function deleteCourse(event) {
-		console.log("delete course");
-		$.ajax({
-				url: "courses",
-				type: "delete",
-				data: {
-					courseNumber: $("#courseNumberDelete").val(),
-				},
-				success: function(data) {
-					if (data == "true") { $('#div2').html("Successfully deleted course"); }
-					else { $('#div2').html("Could not delete course")};
-				}
-		});
-		return false;	
-	};
-
-
-	$(function() {
-		$("#f1").click(viewCourse);
-		$("#f2").submit( function(event) {
-			event.preventDefault();
-			createCourse();
-		});
-
-		$("#f3").submit( function(event) {
-			event.preventDefault();
-			editCourse();
-		});
-
-		$("#f4").submit( function(event) {
-			event.preventDefault();
-			deleteCourse();
-		});
-
-	} );
-
-
-    </script>
+    <script src="javascripts/coursesapp.js"></script>
+    <link rel="stylesheet" href="stylesheets/style.css" />
   </head>
 
   <body>
 	
 	<input id="f1" type="button" value="View Courses">
 	<div id="div1"> </div>
+      <br /><hr /><br />
 
 	<form id="f2">
 		<input type="text" id="courseNumber" placeholder="Course Number">
@@ -121,20 +19,25 @@
 		<input type="text" id="instructor" placeholder="Instructor Name">
 		<input type="submit" value="Create New">
 	</form>
-
+      <br /><hr />
+      
+    <p>Enter an existing course ID to edit, as well as the new course name and new instructor.</p>  
 	<form id="f3">
 		<input type="text" id="courseNumberEdit" placeholder="Course Number">
-		<input type="text" id="nameEdit" placeholder="Course Name">
-		<input type="text" id="instructorEdit" placeholder="Instructor Name">
+		<input type="text" id="nameEdit" placeholder="New Name">
+		<input type="text" id="instructorEdit" placeholder="New Instructor">
 		<input type="submit" value="Edit Course">
 	</form>
-
-	<div id="div2"></div>
+      <br /><hr /><br />
 
 	<form id="f4">
 		<input type="text" id="courseNumberDelete" placeholder="Course Number">
 		<input type="submit" value="Delete Course">
 	</form>
+      <br /><hr /><br />
 
+      	<div id="div2"><em>(Status of last operation will appear here after you do something.)</em></div>
+
+      
   </body>
 </html>
