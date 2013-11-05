@@ -1,4 +1,5 @@
 var express = require('express'),
+    cons = require ('consolidate'),
     routes = require('./routes/slash'),
     course = require('./routes/course'),
     update = require('./routes/update'),

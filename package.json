@@ -5,7 +5,8 @@
     "start": "node app"
   },
   "dependencies": {
-    "express": "3.0.0",
+    "express": "*",
+    "consolidate": "*",
     "ejs": "*",
     "html":"*"
   }
