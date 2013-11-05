@@ -35,9 +35,9 @@
 				url: "courses",
 				type: "put",
 				data: {
-					courseNumber: $("#courseNumber").val(),
-					name: $("#name").val(),
-					instructor: $("#instructor").val()
+					courseNumber: $("#courseNumber1").val(),
+					name: $("#name1").val(),
+					instructor: $("#instructor1").val()
 				},
 				success: function(data) {
 					if (data == "true") { $('#div2').html("Successfully created course"); }
@@ -56,9 +56,9 @@
 				url: "courses",
 				type: "post",
 				data: {
-					courseNumber: $("#courseNumber").val(),
-					name: $("#name").val(),
-					instructor: $("#instructor").val()
+					courseNumber: $("#courseNumber2").val(),
+					name: $("#name2").val(),
+					instructor: $("#instructor2").val()
 				},
 				success: function(data) {
 					if (data == "true") { $('#div2').html("Successfully edited course"); }
@@ -76,7 +76,7 @@
 				url: "courses",
 				type: "delete",
 				data: {
-					courseNumber: $("#courseNumber").val(),
+					courseNumber: $("#courseNumber3").val(),
 				},
 				success: function(data) {
 					if (data == "true") { $('#div2').html("Successfully deleted course"); }
@@ -116,23 +116,23 @@
 	<div id="div1"> </div>
 
 	<form id="f2">
-		<input type="text" id="courseNumber" placeholder="Course Number">
-		<input type="text" id="name" placeholder="Course Name">
-		<input type="text" id="instructor" placeholder="Instructor Name">
+		<input type="text" id="courseNumber1" placeholder="Course Number">
+		<input type="text" id="name1" placeholder="Course Name">
+		<input type="text" id="instructor1" placeholder="Instructor Name">
 		<input type="submit" value="Create New">
 	</form>
 
 	<form id="f3">
-		<input type="text" id="courseNumber" placeholder="Course Number">
-		<input type="text" id="name" placeholder="Course Name">
-		<input type="text" id="instructor" placeholder="Instructor Name">
+		<input type="text" id="courseNumber2" placeholder="Course Number">
+		<input type="text" id="name2" placeholder="Course Name">
+		<input type="text" id="instructor2" placeholder="Instructor Name">
 		<input type="submit" value="Edit Course">
 	</form>
 
 	<div id="div2"></div>
 
 	<form id="f4">
-		<input type="text" id="courseNumber" placeholder="Course Number">
+		<input type="text" id="courseNumber3" placeholder="Course Number">
 		<input type="submit" value="Delete Course">
 	</form>
 

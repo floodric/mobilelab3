@@ -33,6 +33,9 @@ function addToList(course){
 }
 
 function removeFromList(courseNumber){
+  if(typeof(courseNumber) == "object"){ // something went wrong and we have a course
+    courseNumber = courseNumber.courseNumber;
+  }
   console.log(courseNumber+" ismatch"+getCourse(courseNumber));
   courseNumber = stripDash(courseNumber);
   if(getCourse(courseNumber)){
@@ -46,8 +49,11 @@ function removeFromList(courseNumber){
   return false;
 }
 
-function editCourse(courseNumber){
-  courseNumber = stripDash(courseNumber);
+function editCourse(course){
+  if(typeof(courseNumber) == "object"){ // something went wrong and we have a course
+    courseNumber = courseNumber.courseNumber;
+  }
+  courseNumber = stripDash(course.courseNumber);
   if(getCourse(courseNumber)){
     courseList = courseList.map(function(val,i,arr){
       if(val.courseNumber == courseNumber){
