@@ -20,32 +20,41 @@ app.configure(function(){
 });
 
 app.get('/', routes.pathless);	
-app.get('/courses', model.list);	
+app.get('/courses', function(req,res){
+  var courseList = model.list()
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end(JSON.stringify(courseList));
+});	
 // function(req,res){ console.log(typeof req.params.coursenum) });
 app.get('/courses/:coursenum', function(req,res){
   var course = model.view(req.params.coursenum);
-  res.send(JSON.stringify(course));
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end(JSON.stringify(course));
 });	
 //app.get('/courses/:coursenum/students', routes.pathless);	
 //app.get('/courses/:coursenum/students/:andrew', routes.pathless);	
 app.put('/courses', function(req,res){
-  var course = model.create(req.params.coursenum);
-  res.send(JSON.stringify(course));
+  var course = {"courseNumber":req.body.courseNumber,"name":req.body.name,"instructor":req.body.instructor};
+  console.log(course);
+  var bool = model.create(course);
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end(JSON.stringify(bool));
 });	
 //app.put('/courses/:coursenum/students', routes.pathless);	
-app.post('/courses/:coursenum',function(req,res){
-  var bool = model.edit(req.params.coursenum);
-  res.send(JSON.stringify(bool));
+app.post('/courses',function(req,res){
+  var course = {"courseNumber":req.body.courseNumber,"name":req.body.name,"instructor":req.body.instructor};
+  console.log(JSON.stringify(course));
+  var bool = model.edit(course);
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end(JSON.stringify(bool));
 });	
 //app.post('/courses/:coursenum/students/:andrew', routes.pathless);	
 app.delete('/courses', function(req,res){
-  var bool = model.destroy(req.params.coursenum);
-  res.send(JSON.stringify(bool));
+  var bool = model.destroy(req.body.courseNumber);
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end(JSON.stringify(bool));
 });	
 //app.delete('/courses/:coursenum/students', routes.pathless);	
-
-app.post('/request', update.doPost);	// example handling of a POST request 
-app.put('/request', update.doPut);		// example handling of a PUT request
 
 app.listen(5555);
 console.log("Express server listening on port 5555");

@@ -17,8 +17,10 @@
 				},
 				success: function(data) {
 					//$('#div1').(JSON.parse(data));
+          console.log(data);
 					data = JSON.parse(data);
 					data.forEach(function( val, i, arr) {
+						console.log(val);
 						$('#div1').append("<p>" + val.courseNumber + ": " + val.name + "</p>");
 					});
 				}
@@ -28,13 +30,14 @@
 	};
 
 	function createCourse(event) {
+		console.log("create course");
 		$.ajax({
 				url: "courses",
 				type: "put",
 				data: {
-					courseNumber: $("#courseNumber1").val(),
-					name: $("#name1").val(),
-					instructor: $("#instructor1").val()
+					courseNumber: $("#courseNumber").val(),
+					name: $("#name").val(),
+					instructor: $("#instructor").val()
 				},
 				success: function(data) {
 					if (data == "true") { $('#div2').html("Successfully created course"); }
@@ -48,13 +51,14 @@
 
 
 	function editCourse(event) {
+		console.log("edit course");
 		$.ajax({
 				url: "courses",
 				type: "post",
 				data: {
-					courseNumber: $("#courseNumber2").val(),
-					name: $("#name2").val(),
-					instructor: $("#instructor2").val()
+					courseNumber: $("#courseNumber").val(),
+					name: $("#name").val(),
+					instructor: $("#instructor").val()
 				},
 				success: function(data) {
 					if (data == "true") { $('#div2').html("Successfully edited course"); }
@@ -67,11 +71,12 @@
 
 
 	function deleteCourse(event) {
+		console.log("delete course");
 		$.ajax({
 				url: "courses",
 				type: "delete",
 				data: {
-					courseNumber: $("#courseNumber3").val(),
+					courseNumber: $("#courseNumber").val(),
 				},
 				success: function(data) {
 					if (data == "true") { $('#div2').html("Successfully deleted course"); }
@@ -111,23 +116,23 @@
 	<div id="div1"> </div>
 
 	<form id="f2">
-		<input type="text" id="courseNumber1" placeholder="Course Number">
-		<input type="text" id="name1" placeholder="Course Name">
-		<input type="text" id="instructor1" placeholder="Instructor Name">
+		<input type="text" id="courseNumber" placeholder="Course Number">
+		<input type="text" id="name" placeholder="Course Name">
+		<input type="text" id="instructor" placeholder="Instructor Name">
 		<input type="submit" value="Create New">
 	</form>
 
 	<form id="f3">
-		<input type="text" id="courseNumber2" placeholder="Course Number">
-		<input type="text" id="name2" placeholder="Course Name">
-		<input type="text" id="instructor2" placeholder="Instructor Name">
+		<input type="text" id="courseNumber" placeholder="Course Number">
+		<input type="text" id="name" placeholder="Course Name">
+		<input type="text" id="instructor" placeholder="Instructor Name">
 		<input type="submit" value="Edit Course">
 	</form>
 
 	<div id="div2"></div>
 
 	<form id="f4">
-		<input type="text" id="courseNumber3" placeholder="Course Number">
+		<input type="text" id="courseNumber" placeholder="Course Number">
 		<input type="submit" value="Delete Course">
 	</form>
 
