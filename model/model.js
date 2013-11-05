@@ -33,19 +33,25 @@ function addToList(course){
 }
 
 function removeFromList(courseNumber){
+  console.log(courseNumber+" ismatch"+getCourse(courseNumber));
   courseNumber = stripDash(courseNumber);
   if(getCourse(courseNumber)){
-    courseList.filter(function(val,i,arr){val.courseNumber == courseNumber});
+    console.log(courseList.length);
+    courseList = courseList.filter(function(val,i,arr){
+      return !(val.courseNumber == courseNumber);
+    });
+    console.log(courseList.length);
     return true;
   }
   return false;
 }
 
-function editCourse(course){
+function editCourse(courseNumber){
   courseNumber = stripDash(courseNumber);
   if(getCourse(courseNumber)){
-    courseList.map(function(val,i,arr){
+    courseList = courseList.map(function(val,i,arr){
       if(val.courseNumber == courseNumber){
+        console.log("val: "+val.name+" course: "+course.name);
         return course;
       } else{ 
         return val;

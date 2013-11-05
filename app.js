@@ -43,15 +43,16 @@ app.put('/courses', function(req,res){
 //app.put('/courses/:coursenum/students', routes.pathless);	
 app.post('/courses',function(req,res){
   var course = {"courseNumber":req.body.courseNumber,"name":req.body.name,"instructor":req.body.instructor};
+  console.log(JSON.stringify(course));
   var bool = model.edit(course);
   res.writeHead(200, {'Content-Type': 'text/plain'});
   res.end(JSON.stringify(bool));
 });	
 //app.post('/courses/:coursenum/students/:andrew', routes.pathless);	
 app.delete('/courses', function(req,res){
-  var bool = model.destroy(req.body.coursenum);
+  var bool = model.destroy(req.body.courseNumber);
   res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.send(JSON.stringify(bool));
+  res.end(JSON.stringify(bool));
 });	
 //app.delete('/courses/:coursenum/students', routes.pathless);	
 
