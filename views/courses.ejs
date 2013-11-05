@@ -56,9 +56,9 @@
 				url: "courses",
 				type: "post",
 				data: {
-					courseNumber: $("#courseNumber").val(),
-					name: $("#name").val(),
-					instructor: $("#instructor").val()
+					courseNumber: $("#courseNumberEdit").val(),
+					name: $("#nameEdit").val(),
+					instructor: $("#instructorEdit").val()
 				},
 				success: function(data) {
 					if (data == "true") { $('#div2').html("Successfully edited course"); }
@@ -76,7 +76,7 @@
 				url: "courses",
 				type: "delete",
 				data: {
-					courseNumber: $("#courseNumber").val(),
+					courseNumber: $("#courseNumberDelete").val(),
 				},
 				success: function(data) {
 					if (data == "true") { $('#div2').html("Successfully deleted course"); }
@@ -123,16 +123,16 @@
 	</form>
 
 	<form id="f3">
-		<input type="text" id="courseNumber" placeholder="Course Number">
-		<input type="text" id="name" placeholder="Course Name">
-		<input type="text" id="instructor" placeholder="Instructor Name">
+		<input type="text" id="courseNumberEdit" placeholder="Course Number">
+		<input type="text" id="nameEdit" placeholder="Course Name">
+		<input type="text" id="instructorEdit" placeholder="Instructor Name">
 		<input type="submit" value="Edit Course">
 	</form>
 
 	<div id="div2"></div>
 
 	<form id="f4">
-		<input type="text" id="courseNumber" placeholder="Course Number">
+		<input type="text" id="courseNumberDelete" placeholder="Course Number">
 		<input type="submit" value="Delete Course">
 	</form>
 
