@@ -35,9 +35,9 @@
 				url: "courses",
 				type: "put",
 				data: {
-					courseNumber: $("#courseNumber1").val(),
-					name: $("#name1").val(),
-					instructor: $("#instructor1").val()
+					courseNumber: $("#courseNumber").val(),
+					name: $("#name").val(),
+					instructor: $("#instructor").val()
 				},
 				success: function(data) {
 					if (data == "true") { $('#div2').html("Successfully created course"); }
@@ -56,9 +56,9 @@
 				url: "courses",
 				type: "post",
 				data: {
-					courseNumber: $("#courseNumber2").val(),
-					name: $("#name2").val(),
-					instructor: $("#instructor2").val()
+					courseNumber: $("#courseNumberEdit").val(),
+					name: $("#nameEdit").val(),
+					instructor: $("#instructorEdit").val()
 				},
 				success: function(data) {
 					if (data == "true") { $('#div2').html("Successfully edited course"); }
@@ -76,7 +76,7 @@
 				url: "courses",
 				type: "delete",
 				data: {
-					courseNumber: $("#courseNumber3").val(),
+					courseNumber: $("#courseNumberDelete").val(),
 				},
 				success: function(data) {
 					if (data == "true") { $('#div2').html("Successfully deleted course"); }
@@ -123,16 +123,26 @@
 	</form>
 
 	<form id="f3">
+<<<<<<< HEAD
 		<input type="text" id="courseNumber2" placeholder="Course Number">
 		<input type="text" id="name2" placeholder="Course Name">
 		<input type="text" id="instructor2" placeholder="Instructor Name">
+=======
+		<input type="text" id="courseNumberEdit" placeholder="Course Number">
+		<input type="text" id="nameEdit" placeholder="Course Name">
+		<input type="text" id="instructorEdit" placeholder="Instructor Name">
+>>>>>>> 77544dded0126a2c5e045ab20ad2f847ef3ffa3a
 		<input type="submit" value="Edit Course">
 	</form>
 
 	<div id="div2"></div>
 
 	<form id="f4">
+<<<<<<< HEAD
 		<input type="text" id="courseNumber3" placeholder="Course Number">
+=======
+		<input type="text" id="courseNumberDelete" placeholder="Course Number">
+>>>>>>> 77544dded0126a2c5e045ab20ad2f847ef3ffa3a
 		<input type="submit" value="Delete Course">
 	</form>
 
