@@ -3,5 +3,5 @@
  */
 
 exports.pathless = function(req, res){
-  res.render('courses.html');
+  res.render('courses', { courseList: 'Courses'});
 };
